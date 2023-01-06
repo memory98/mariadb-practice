@@ -30,3 +30,14 @@ show tables;
  insert into pet values('보리','정은성','dog','m','2020-11-11',null);
  
  select * from pet;
+ 
+ update pet set name='보리ㅣ' where name ='보리';
+ 
+ -- delete from pet 
+ delete from pet where name ='보리ㅣ';
+ 
+ -- load data
+ load data local infile 'd:\pet.txt' into table pet;
+ 
+ -- select 
+ select name,species from pet where name = 'Bowser';
