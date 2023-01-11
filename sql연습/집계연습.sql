@@ -52,4 +52,4 @@ having emp_no = '10060';
 
 
 -- 7) order by
--- 		order by는 항상 맨 마닞막 출력 전에 한다.
+-- 		order by는 항상 맨 마지막 출력 전에 한다.
