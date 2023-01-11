@@ -88,6 +88,7 @@ group by a.title
 			                        and a.to_date = '9999-01-01'
                                     and b.to_date = '9999-01-01'
 							   group by a.title) a);
+							
                                
 -- 4) sol2: top-k
   select a.title, avg(b.salary) as avg_salary
