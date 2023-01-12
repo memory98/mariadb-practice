@@ -1,32 +1,50 @@
 -- 문제1 : 현재 평균 연봉보다 많은 월급을 받는 직원은 몇 명이나 있습니까?
-select count(*)
-	from salaries s
-  where s.salary > (
-                   select avg(s.salary) as avg_salary
-				 from salaries s
-                 where s.to_date = '9999-01-01'
-  ) 
-  and s.to_date = '9999-01-01'
+SELECT 
+    COUNT(*)
+FROM
+    salaries s
+WHERE
+    s.salary > (SELECT 
+            AVG(s.salary) AS avg_salary
+        FROM
+            salaries s
+        WHERE
+            s.to_date = '9999-01-01')
+        AND s.to_date = '9999-01-01'
 ;
                  
  -- (x) 문제2 : 현재, 각 부서별로 최고의 급여를 받는 사원의 사번, 이름, 부서 연봉을 조회하세요. 단 조회결과는 연봉의 내림차순으로 정렬되어 나타나야 합니다. 
 
 
 -- 문제3 : 현재, 자신의 부서 평균 급여보다 연봉(salary)이 많은 사원의 사번, 이름과 급여을 조회하세요 
-select e.first_name, e.emp_no, de.dept_no, s.salary, avgs.avg_salary 
-	from employees e join dept_emp de on e.emp_no = de.emp_no
-					 join salaries s on e.emp_no = s.emp_no
-				join (
-								select de.emp_no as emp_num, de.dept_no as dept_num, avg(s.salary) as avg_salary
-								from dept_emp de join salaries s on de.emp_no = s.emp_no  
-												 join employees e on s.emp_no = e.emp_no
-								where de.to_date = '9999-01-01'
-								and s.to_date = '9999-01-01'
-							 group by de.dept_no
-							)avgs
-    on de.dept_no = avgs.dept_num	 
-where de.to_date = '9999-01-01'
- and s.salary >avgs.avg_salary
+SELECT 
+    e.first_name,
+    e.emp_no,
+    de.dept_no,
+    s.salary,
+    avgs.avg_salary
+FROM
+    employees e
+        JOIN
+    dept_emp de ON e.emp_no = de.emp_no
+        JOIN
+    salaries s ON e.emp_no = s.emp_no
+        JOIN
+    (SELECT 
+        de.emp_no AS emp_num,
+            de.dept_no AS dept_num,
+            AVG(s.salary) AS avg_salary
+    FROM
+        dept_emp de
+    JOIN salaries s ON de.emp_no = s.emp_no
+    JOIN employees e ON s.emp_no = e.emp_no
+    WHERE
+        de.to_date = '9999-01-01'
+            AND s.to_date = '9999-01-01'
+    GROUP BY de.dept_no) avgs ON de.dept_no = avgs.dept_num
+WHERE
+    de.to_date = '9999-01-01'
+        AND s.salary > avgs.avg_salary
 ;
 
 
