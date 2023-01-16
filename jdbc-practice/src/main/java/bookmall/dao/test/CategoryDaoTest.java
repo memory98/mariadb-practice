@@ -19,7 +19,7 @@ public class CategoryDaoTest {
 		}
 	}
 
-	private static void testInsert() {
+	public static void testInsert() {
 		CategoryVo vo = null;
 		CategoryDao dao = new CategoryDao();
 

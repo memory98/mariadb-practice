@@ -19,7 +19,7 @@ public class BookDaoTest {
 		}
 	}
 
-	private static void testInsert() {
+	public static void testInsert() {
 		BookVo vo = null;
 		BookDao dao = new BookDao();
 		

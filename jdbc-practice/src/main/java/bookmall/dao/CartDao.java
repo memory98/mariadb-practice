@@ -14,10 +14,23 @@ public class CartDao {
 	public void insert(CartVo vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
 		try {
 			conn = getConnection();
-
+			
+			String sql_book = "select no,title,price from book where no = "+vo.getBookNo();
+			pstmt = conn.prepareStatement(sql_book);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				CartVo cartVo = new CartVo();
+				vo.setTitle(rs.getString(2));
+				Long totalPrice = vo.getCount() * Long.parseLong(rs.getString(3));
+				vo.setTotalPrice(totalPrice);
+			}
+			
 			String sql = "insert into cart values(null,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 
@@ -28,6 +41,10 @@ public class CartDao {
 			pstmt.setLong(5, vo.getUserNo());
 			pstmt.executeUpdate();
 
+
+			
+			
+			
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		} finally {

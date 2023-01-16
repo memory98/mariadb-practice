@@ -105,7 +105,7 @@ public class OrdersDao {
 			ArrayList<Long> bookNo = new ArrayList<Long>();
 			ArrayList<Long> ordersNo = new ArrayList<Long>();		
 			
-			String sql = "select c.count, c.book_no, o.no from user u "
+			String sql = "select c.book_no,c.count, o.no from user u "
 					+ "join orders o on  u.no = o.user_no "
 					+ "join cart c on o.user_no = c.user_no";
 			

@@ -19,7 +19,7 @@ public class UserDaoTest {
 		}
 	}
 
-	private static void testInsert() {
+	public static void testInsert() {
 		UserVo vo = null;
 		UserDao dao = new UserDao();
 

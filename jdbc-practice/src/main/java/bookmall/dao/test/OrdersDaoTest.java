@@ -21,7 +21,7 @@ public class OrdersDaoTest {
 		}
 	}
 
-	private static void testInsert() {
+	public static void testInsert() {
 		OrdersVo vo = null;
 		OrdersDao dao = new OrdersDao();
 
