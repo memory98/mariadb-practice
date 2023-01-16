@@ -127,8 +127,8 @@ public class OrdersDao {
 			String sql2 =""; 
 			for(int i = 0; i<count.size();i++) {
 				sql2="insert into order_book values(null,"+count.get(i)+","
-						+bookNo.get(i)+","+ordersNo+")";
-				pstmt = conn.prepareStatement(sql);
+						+bookNo.get(i)+","+ordersNo.get(i)+")";
+				pstmt = conn.prepareStatement(sql2);
 				pstmt.setLong(1, count.get(i));
 				pstmt.setLong(2, bookNo.get(i));
 				pstmt.setLong(3, ordersNo.get(i));

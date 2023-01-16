@@ -33,7 +33,7 @@ public class BookMall {
 		System.out.println("## 주문 도서 리스트");
 		// 도서번호, 도서제목, 수량
 		OrdersDao ordersDao = new OrdersDao();
-		ordersDao.setOrderBooK();
-//		ordersDao.printOrderBooK();
+//		ordersDao.setOrderBooK();
+		ordersDao.printOrderBooK();
 	}
 }
