@@ -23,7 +23,6 @@ public class BookMall {
 //		order.testInsert();
 //		ordersDao.setOrderBooK();
 
-		
 		System.out.println("## 회원리스트");
 		// 이름, 전화번호, 이메일, 비밀번호
 		user.testFindAll();
@@ -32,13 +31,13 @@ public class BookMall {
 		category.testFindAll();		
 		System.out.println("## 상품");
 		// 제목, 가격.
-		book.testFindAll();		
+		book.testFindAll();	
 		System.out.println("## 카트");
 		// 도서제목, 수량, 가격
-		cart.testFindAll();		
+		cart.testFindAll();	
 		System.out.println("## 주문");
 		// 주문번호(order_no), 주문자(이름/이메일), 결제금액, 배송지
-		order.testFindAll();		
+		order.testFindAll();
 		System.out.println("## 주문 도서 리스트");
 		// 도서번호, 도서제목, 수량
 		ordersDao.printOrderBooK();
